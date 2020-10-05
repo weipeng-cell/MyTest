@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 450px;
+            height: 660px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #67b374;
+        }
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var prev = document.getElementById("prev");
+            var next = document.getElementById("next");
+            var img = document.getElementsByTagName("img")[0];
+
+            imgArr = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg",
+                "img/5.jpg","img/6.jpg","img/7.jpg","img/8.jpg","img/9.jpg","img/10.jpg"];
+            var info = document.getElementById("info");
+            info.innerHTML = "一共"+imgArr.length+ " 张图片，当前第"+(index+1)+"章";
+            var index = 0;
+            prev.onclick = function () {
+                index--;
+                if (index < 0){
+                    index = imgArr.length -1;
+                }
+                img.src = imgArr[index];
+                info.innerHTML = "一共"+imgArr.length+ " 张图片，当前第"+(index+1)+"章";
+
+            };
+            next.onclick = function () {
+                index++;
+                if (index > imgArr.length -1) {
+                    index = -1;
+                    index ++;
+
+                }
+                img.src = imgArr[index];
+                info.innerHTML = "一共"+imgArr.length+ " 张图片，当前第"+(index+1)+"章";
+
+            };
+
+
+
+        }
+    </script>
+
+</head>
+<body>
+  <div id="outer">
+      <p id="info">总共10张图片，当前第1张</p>
+      <img src="img/1.jpg" width="435px" height="630px" alt="美女">
+      <button id="prev">上一张</button>
+      <button id="next">下一张</button>
+  </div>
+
+</body>
+</html>

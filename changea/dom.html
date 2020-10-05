@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #total{
+            border: 2px solid red;
+            width: 300px;
+            float: left;
+            margin: 50px 200px;
+            position: relative;
+        }
+        li{
+            display: inline-block;
+            width: 40px;
+            border: 1px solid black;
+            background-color: #67b374;
+            list-style-type: none;
+            overflow: hidden;
+        }
+        #btnlist{
+            float: right;
+            margin: 50px 550px;
+            /*margin: -140px 550px;*/
+            position: absolute;
+
+        }
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+         myClick("btn1",function () {
+             var li = document.createElement("li");
+             var gzText = document.createTextNode("广州");
+             li.appendChild(gzText);
+             var city = document.getElementById("city");
+             city.appendChild(li);
+
+         });
+         myClick("btn2",function () {
+             var li = document.createElement("li");
+             var fzText = document.createTextNode("广州");
+             li.appendChild(fzText);
+             var bj = document.getElementById("bj");
+             var city = document.getElementById("city");
+             city.insertBefore(li , bj);
+
+         });
+         myClick("btn4",function () {
+             var bj = document.getElementById("bj");
+             var city = document.getElementById("city");
+             bj.parentNode.removeChild(bj);
+
+         })
+
+
+            function myClick(idstr,fun) {
+                var btn = document.getElementById(idstr);
+                btn.onclick = fun;
+
+            }
+        };
+
+
+    </script>
+</head>
+<body>
+    <form>
+        <div id="total">
+            <div id="inner">
+
+            <p>
+                你喜欢那个城市？
+            </p>
+
+            <ul id="city">
+                <li id="bj">北京</li>
+                <li>上海</li>
+                <li>杭州</li>
+                <li>南京</li>
+            </ul>
+        </div>
+        </div>
+        <div id="btnlist">
+        <div><button id="btn1">添加</button></div>
+        <div><button id="btn2">插入</button></div>
+        <div><button id="btn3">替换</button></div>
+        <div><button id="btn4">删除</button></div>
+        </div>
+
+    </form>
+
+</body>
+</html>

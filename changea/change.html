@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>图片切换</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+								
+			}
+			#outer{		
+				padding: 10px;
+				margin: 50px auto;
+				width: 460px;
+				height: 640px;
+				background-color: #478480;
+				text-align: center;
+			}
+		</style>
+
+		<script type="text/javascript">
+            window.onload = function () {
+                var prev = document.getElementById("prev");
+                var next = document.getElementById("next");
+                var img = document.getElementsByTagName("img")[0];
+                var imgArr = ["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg", "img/5.jpg", "img/6.jpg", "img/7.jpg",
+                    "img/8.jpg", "img/9.jpg", "img/10.jpg"
+                ];
+                var info = document.getElementById("info");
+                info.innerHTML = "一共"+imgArr.length+ " 张图片，当前第"+(index+1)+"章";
+                var index = 0;
+                prev.onclick = function () {
+                    index--;
+                    if (index < 0){
+                        index = imgArr.length -1;
+                    }
+                    img.src = imgArr[index];
+                    info.innerHTML = "一共"+imgArr.length+ " 张图片，当前第"+(index+1)+"章";
+
+                };
+                next.onclick = function () {
+                    index++;
+                    if (index > imgArr.length-1){
+                        index = imgArr.length-1;
+                    }
+                    img.src = imgArr[index];
+                    info.innerHTML = "一共"+imgArr.length+ " 张图片，当前第"+(index+1)+"章";
+                };
+            }
+
+		</script>
+	</head>
+	<body>
+		<div id="outer">
+            <p id="info">总共10张图片，当前第1张</p>
+		<img src="img/1.jpg" width="430px" height="600px" align="center" alt="反差婊" />
+
+		<button id="prev" >上一张</button>
+		<button id="next" >下一张</button>
+		</div>
+	</body>
+</html>
